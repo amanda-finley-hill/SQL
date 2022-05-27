@@ -1,0 +1,43 @@
+**In this project I pulled info from a database in Khan Academy that contained data from a global furniture store. 
+This database includes 100 rows of data with transaction_date, product, price, payment_type, name, city, state, country, account_created, last_login, latitude, and longitude. See the questions I asked and the SQL I used to answer the questions raised below.**
+
+#1
+**What is the average sales price per item sold? Answer: $1740**
+SELECT AVG(price) FROM sales;
+
+#2
+**Which item sells for the cheapest price? Answer: Chair for $1200**
+SELECT product, MIN(price) FROM sales;
+
+#3
+**Which item sells for the most expensive price? Answer: Bed for $7500**
+SELECT product, MAX(price) FROM sales;
+
+#4
+**I created a query to show the total sales from each country to answer the following question. Which country has the most sales? Answer: United states with $97200**
+SELECT country, SUM(price) FROM sales GROUP BY country ORDER BY SUM(price);
+
+#5
+**Which country sells the most per item sold? Answer: Germany with an average of $3600 per item**
+SELECT country, AVG(price) FROM sales GROUP BY country ORDER BY AVG(price);
+
+#6
+**What are the top 3 countries for total sales? Answer: United States, Canada, United Kingdom**
+SELECT country, SUM(price) AS total_sales FROM sales
+    GROUP BY country
+    HAVING total_sales > 10000 ORDER BY total_sales;
+
+#7
+**Our company's average sales goal is between 1201-2000. I used the following query to identify the countries who are exceeding expectations.   Expectations exceeded: Germany, Switzerland, United States**
+/* CASE */
+SELECT  country, AVG(price),
+    CASE 
+        WHEN AVG(price) < 1201 THEN "below expectations"
+        WHEN AVG(price) > 2000 THEN "above expectations"
+        ELSE "within expectations"
+    END as "sales_goals"
+FROM sales GROUP BY country ORDER BY sales_goals;
+
+#8
+**How many customers use their Visa card to purchase furniture above 1201? Answer: 6**
+SELECT COUNT (ID) FROM sales WHERE price > 1201 AND payment_type = "Visa" ORDER BY country;

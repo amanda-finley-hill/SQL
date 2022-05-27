@@ -1,4 +1,4 @@
-**In this project I pulled info from a database in Khan Academy that contained data from a global furniture store. 
+**In this project I used information regarding sales from an online furniture store collected by: https://www.khanacademy.org/profile/charlesb2000/.
 This database includes 100 rows of data with transaction_date, product, price, payment_type, name, city, state, country, account_created, last_login, latitude, and longitude. See the questions I asked and the SQL I used to answer the questions raised below.**
 
 #1

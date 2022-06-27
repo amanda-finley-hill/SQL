@@ -1,4 +1,4 @@
-***I was able to use this query to connect friends based on hobbies.***
+***I was able to use this query to connect friends based on hobbies on a dataset from Khan Academy.***
 
 
 CREATE TABLE persons (

@@ -1,4 +1,4 @@
-**I used Microsoft SSMS to combine 2 datasets to come up with a query to find the highest scoring cities for work life balance that also has the most Subway restaurant locations**
+**I used Microsoft SSMS to combine 2 datasets from kaggle.com to come up with a query to find the highest scoring cities for work life balance that also has the most Subway restaurant locations**
 
 SELECT TOP 10 dbo.Cities.City, ROUND(dbo.Cities.Score,2) AS Score, COUNT(dbo.Subway.city) AS Store_Total
 FROM dbo.Cities
